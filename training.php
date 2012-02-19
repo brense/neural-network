@@ -1,6 +1,6 @@
 <?php
 
-if($_SERVER["REMOTE_ADDR"] != '83.84.131.214'){exit;}
+//if($_SERVER["REMOTE_ADDR"] != '83.84.131.214'){exit;}
 
 set_time_limit(300);
 
