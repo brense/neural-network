@@ -39,7 +39,7 @@ class Memory {
 	public function reward(Neuron $neuron, Dendrite $dendrite){
 		$history = $this->getHistory($dendrite);
 		if($neuron->weights[$dendrite->id] < 0.5){
-			if($neuron->weights[$dendrite->id] > $history['mean']){
+			if($history['mean'] > 0){
 				// we're pretty sure the weight is moving in the right direction
 				$this->adjust($dendrite, 0.005);
 			} else {
@@ -52,7 +52,7 @@ class Memory {
 	public function increase(Neuron $neuron, Dendrite $dendrite){
 		$history = $this->getHistory($dendrite);
 		if($neuron->weights[$dendrite->id] < 0.5){
-			if($neuron->weights[$dendrite->id] > $history['mean']){
+			if($history['mean'] > 0){
 				// we're pretty sure the weight is moving in the right direction
 				$this->adjust($dendrite, 0.02);
 			} else {
@@ -65,7 +65,7 @@ class Memory {
 	public function decrease(Neuron $neuron, Dendrite $dendrite){
 		$history = $this->getHistory($dendrite);
 		if($neuron->weights[$dendrite->id] > 0.01){
-			if($neuron->weights[$dendrite->id] < $history['mean']){
+			if($history['mean'] < 0){
 				// we're pretty sure the weight is moving in the right direction
 				$this->adjust($dendrite, -0.02);
 			} else {
