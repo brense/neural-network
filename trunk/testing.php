@@ -1,12 +1,5 @@
 <?php
 
-set_time_limit(300);
-
-error_reporting(E_ALL);
-ini_set('display_errors','On');
-
-$start = microtime(true);
-
 include('Autoloader.php');
 
 $inputLayer = array(
@@ -191,13 +184,9 @@ $arr[] = array('input' => array(
 
 shuffle($arr);
 
-$brain->input($arr[0]['input'], $arr[0]['answer']);
-$output = $brain->getOutput();
-$brain->backPropagate($output);
+$brain->input($arr[0]['input']);
+echo json_encode(array('output' => $brain->getOutput(), 'answer' => $arr[0]['answer']));
 
-$run = Memory::instance()->getLastRun();
-$end = microtime(true);
-echo json_encode(array('run' => $run, 'time' => $end - $start));
 exit;
 
 ?>
