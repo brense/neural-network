@@ -76,6 +76,6 @@ function correct(){
 		}
 	});
 	var av = (100 / count) * correct;
-	$('h2 span').html(av);
+	$('h2 span').html(Math.round(av));
 }
 </script>
